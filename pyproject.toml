@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=68.0", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dotspot"
+version = "0.0.2"
+description = "A powerful web vulnerability scanner with SQL injection, SSTI, exposed path detection, and AI-powered analysis."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.9"
+authors = [
+    {name = "Sagnik Mukherjee"},
+]
+keywords = ["security", "scanner", "vulnerability", "pentesting", "web-security"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Security",
+]
+dependencies = [
+    "requests>=2.28",
+    "rich>=13.0",
+    "urllib3>=2.0",
+    "groq>=0.4",
+]
+
+[project.urls]
+Homepage = "https://github.com/itssagnikmukherjee/dotSpot"
+Repository = "https://github.com/itssagnikmukherjee/dotSpot"
+Issues = "https://github.com/itssagnikmukherjee/dotSpot/issues"
+
+[project.scripts]
+dotspot = "dotspot:main"
+
+[tool.setuptools]
+py-modules = ["dotspot"]
+
+[tool.setuptools.packages.find]
+include = ["checks*", "core*", "data*", "ui*", "utils*"]
+
+[tool.setuptools.package-data]
+data = ["*.txt", "*.json"]

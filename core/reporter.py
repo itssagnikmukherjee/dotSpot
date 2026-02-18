@@ -135,8 +135,8 @@ def save_json_report(report: ScanReport, path: str) -> None:
         "findings": [asdict(f) for f in report.findings]
     }
     
-    with open(path, 'w') as f:
-        json.dump(report_dict, f, indent=2)
+    with open(path, 'w', encoding='utf-8') as f:
+        json.dump(report_dict, f, indent=2, ensure_ascii=False)
 
 
 def save_html_report(report: ScanReport, path: str) -> None:
@@ -231,5 +231,5 @@ def save_html_report(report: ScanReport, path: str) -> None:
 </body>
 </html>"""
     
-    with open(path, 'w') as f:
+    with open(path, 'w', encoding='utf-8') as f:
         f.write(html)

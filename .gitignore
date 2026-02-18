@@ -27,3 +27,8 @@ reports/
 
 # Cache
 *.cache
+
+# Build artifacts
+dist/
+build/
+*.egg-info/

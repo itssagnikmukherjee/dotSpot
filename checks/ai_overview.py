@@ -9,8 +9,8 @@ from rich.markdown import Markdown
 
 console = Console()
 
-GROQ_API_URL = os.environ.get("GROQ_API_URL")
-DEFAULT_MODEL = os.environ.get("DEFAULT_MODEL")
+GROQ_API_URL = os.environ.get("GROQ_API_URL", "https://api.groq.com/openai/v1/chat/completions")
+DEFAULT_MODEL = os.environ.get("DEFAULT_MODEL", "llama-3.3-70b-versatile")
 
 TABLE_WIDTH = 100
 
@@ -29,7 +29,8 @@ def analyze_with_groq(scan_data: Dict, api_key: str) -> str:
     
     findings_text = json.dumps(scan_data.get("findings", []), indent=2)
 
-    prompt = open("data/prompt.txt", "r").read()
+    prompt_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'prompt.txt')
+    prompt = open(prompt_path, "r").read()
 
     try:
         chat_completion = client.chat.completions.create(

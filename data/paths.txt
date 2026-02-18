@@ -1,0 +1,123 @@
+# Common Admin/Panel Paths
+/admin
+/admin/
+/administrator
+/login
+/signin
+/dashboard
+/panel
+/cpanel
+/wp-admin
+/wp-login.php
+/manager
+/management
+/console
+
+# Configuration Files
+/.env
+/.env.local
+/.env.production
+/.env.development
+/config.php
+/config.yml
+/config.json
+/settings.php
+/configuration.php
+/web.config
+/application.yml
+/database.yml
+
+# Backup Files
+/backup
+/backup.sql
+/backup.zip
+/db.sql
+/database.sql
+/dump.sql
+/data.sql
+
+# Version Control
+/.git
+/.git/config
+/.git/HEAD
+/.gitignore
+/.svn
+/.svn/entries
+
+# Common Files
+/robots.txt
+/sitemap.xml
+/sitemap.xml.gz
+/crossdomain.xml
+/.well-known/security.txt
+
+# Server Info
+/server-status
+/server-info
+/info.php
+/phpinfo.php
+/test.php
+
+# API Endpoints
+/api
+/api/v1
+/api/v2
+/graphql
+/swagger
+/swagger.json
+/swagger.yaml
+/api-docs
+
+# Debug/Dev
+/debug
+/test
+/dev
+/staging
+/development
+
+# Cloud/CDN
+/.aws/credentials
+/aws.yml
+/firebase.json
+
+# Hidden Files
+/.htaccess
+/.htpasswd
+/.DS_Store
+
+# Database
+/phpmyadmin
+/adminer
+/adminer.php
+
+# Logs
+/logs
+/log
+/error.log
+/access.log
+/debug.log
+
+# Uploads
+/uploads
+/upload
+/files
+/images
+/media
+
+# Common CMS
+/wordpress
+/wp-content
+/wp-includes
+/joomla
+/drupal
+
+# Credentials
+/credentials
+/secrets
+/.credentials
+/.secrets
+
+# Temp Files
+/tmp
+/temp
+/cache

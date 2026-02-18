@@ -1,0 +1,29 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.env/
+.env
+
+# Environment variables
+.env.*
+!.env.example
+
+# OS files
+.DS_Store
+Thumbs.db
+
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Reports
+reports/
+
+# Cache
+*.cache

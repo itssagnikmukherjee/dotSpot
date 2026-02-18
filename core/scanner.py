@@ -93,8 +93,8 @@ def _run_sqli_only_scan(url: str, max_depth: int = 2):
     console.print(Panel(
         f"[bold cyan]Target:[/] {url}\n"
         f"[bold cyan]Started:[/] {scan_start.strftime('%Y-%m-%d %H:%M:%S')}",
-        title="[bold green]🔍 SQL Injection Scan[/]",
-        border_style="green",
+        title="[bold spring_green1]🔍 SQL Injection Scan[/]",
+        border_style="spring_green1",
         width=TABLE_WIDTH,
         title_align="center"
     ))
@@ -133,8 +133,8 @@ def _run_sqli_only_scan(url: str, max_depth: int = 2):
         table = Table(
             title="[bold red]💉 SQL Injection Results[/]",
             show_header=True,
-            header_style="bold cyan",
-            border_style="bright_blue",
+            header_style="bold spring_green1",
+            border_style="grey39",
             show_lines=True,
             width=TABLE_WIDTH,
         )
@@ -142,7 +142,7 @@ def _run_sqli_only_scan(url: str, max_depth: int = 2):
         table.add_column("URL", style="cyan", no_wrap=False, overflow="fold")
         table.add_column("Injection", style="yellow", no_wrap=False, overflow="fold")
         table.add_column("Payload", style="red", no_wrap=False, overflow="fold")
-        table.add_column("Response", style="green", no_wrap=False, overflow="fold")
+        table.add_column("Response", style="spring_green1", no_wrap=False, overflow="fold")
 
         for i, result in enumerate(sqli_results, 1):
             table.add_row(
@@ -156,8 +156,8 @@ def _run_sqli_only_scan(url: str, max_depth: int = 2):
         console.print(table)
     else:
         console.print(Panel.fit(
-            "[bold green]✅ No SQL Injection vulnerabilities found![/]",
-            border_style="green"
+            "[bold spring_green1]✅ No SQL Injection vulnerabilities found![/]",
+            border_style="grey39"
         ))
 
     console.print()
@@ -171,7 +171,7 @@ def _run_sqli_only_scan(url: str, max_depth: int = 2):
         console.print(Panel.fit(
             "Would you like to make me a [bold cyan]report on SQL injection[/] in this site? [bold](1)[/]\n"
             "Or create a [bold cyan]full report[/]? [bold](2)[/]",
-            border_style="bright_blue",
+            border_style="grey39",
         ))
 
         choice = Prompt.ask(">", choices=["1", "2"], show_choices=False)
@@ -190,8 +190,8 @@ def _run_sqli_only_scan(url: str, max_depth: int = 2):
             html_path = report_paths.get('html', '')
             json_abs = os.path.abspath(json_path) if json_path else ''
             html_abs = os.path.abspath(html_path) if html_path else ''
-            console.print(f"  ✓ JSON report: [link=file://{json_abs}][cyan]{json_path}[/][/link]")
-            console.print(f"  ✓ HTML report: [link=file://{html_abs}][cyan]{html_path}[/][/link]")
+            console.print(f"  ✓ view JSON report at: [link=file://{json_abs}][cyan]{json_path}[/][/link]")
+            console.print(f"  ✓ view HTML report at: [link=file://{html_abs}][cyan]{html_path}[/][/link]")
             console.print()
 
 
@@ -233,7 +233,7 @@ def run_scan(url: str, enable_crawl: bool = True, max_depth: int = 2, vuln_filte
     else:
         ctx.urls = {url}
 
-    console.print("[bold yellow]Phase 2: Security Checks[/]")
+    console.print("[bold spring_green1]Phase 2: Security Checks[/]")
     console.print()
     
     all_check_keys = ["exposed_paths", "cookies", "comments", "base64_decode", "sqli", "ssti", "js_analysis"]
@@ -257,15 +257,15 @@ def run_scan(url: str, enable_crawl: bool = True, max_depth: int = 2, vuln_filte
             ep_sorted = sorted(ep_results, key=lambda r: r['status'])
             ep_table = Table(
                 show_header=True,
-                header_style="bold cyan",
-                border_style="bright_blue",
+                header_style="bold spring_green1",
+                border_style="grey39",
                 show_lines=True,
                 width=TABLE_WIDTH,
             )
             ep_table.add_column("Sl No", style="bold white", justify="center", width=6)
             ep_table.add_column("Route", style="cyan", no_wrap=False, overflow="fold")
             ep_table.add_column("Status", justify="center", width=8)
-            ep_table.add_column("Risk", style="yellow", no_wrap=False, overflow="fold")
+            ep_table.add_column("Risk", style="bold yellow", no_wrap=False, overflow="fold")
 
             for i, result in enumerate(ep_sorted, 1):
                 status = result['status']
@@ -297,8 +297,8 @@ def run_scan(url: str, enable_crawl: bool = True, max_depth: int = 2, vuln_filte
                 ck_table = Table(
                     title=f"[bold yellow]Cookie {idx}[/]",
                     show_header=True,
-                    header_style="bold cyan",
-                    border_style="bright_blue",
+                    header_style="bold spring_green1",
+                    border_style="grey39",
                     show_lines=True,
                     width=TABLE_WIDTH,
                 )
@@ -327,8 +327,8 @@ def run_scan(url: str, enable_crawl: bool = True, max_depth: int = 2, vuln_filte
         if comment_results:
             ct = Table(
                 show_header=True,
-                header_style="bold cyan",
-                border_style="bright_blue",
+                header_style="bold spring_green1",
+                border_style="grey39",
                 show_lines=True,
                 width=TABLE_WIDTH,
             )
@@ -384,8 +384,8 @@ def run_scan(url: str, enable_crawl: bool = True, max_depth: int = 2, vuln_filte
         if sqli_results:
             st = Table(
                 show_header=True,
-                header_style="bold cyan",
-                border_style="bright_blue",
+                header_style="bold spring_green1",
+                border_style="grey39",
                 show_lines=True,
                 width=TABLE_WIDTH,
             )
@@ -413,8 +413,8 @@ def run_scan(url: str, enable_crawl: bool = True, max_depth: int = 2, vuln_filte
         if ssti_results:
             tt = Table(
                 show_header=True,
-                header_style="bold cyan",
-                border_style="bright_blue",
+                header_style="bold spring_green1",
+                border_style="grey39",
                 show_lines=True,
                 width=TABLE_WIDTH,
             )
@@ -455,19 +455,19 @@ def run_scan(url: str, enable_crawl: bool = True, max_depth: int = 2, vuln_filte
             other_findings.append(f)
     
     if other_findings:
-        console.print("[bold yellow]Phase 3: Other Findings[/]")
+        console.print("[bold spring_green1]Phase 3: Other Findings[/]")
         for i, f in enumerate(other_findings, 1):
             console.print(f"     [dim]-[/] {i}. {f}")
         console.print()
 
-    console.print("[bold yellow]Phase 4: AI Overview[/]")
+    console.print("[bold spring_green1]Phase 4: AI Overview[/]")
     try:
         ai_overview.run(ctx)
     except Exception as e:
         console.print(f"[yellow]Skipping AI analysis: {e}[/]")
     console.print()
 
-    console.print("[bold yellow]Phase 5: Generating Report[/]")
+    console.print("[bold spring_green1]Phase 5: Generating Report[/]")
     with console.status("[bold cyan]Creating reports...[/]", spinner="dots"):
         report_paths = generate_report(
             target_url=url,
@@ -498,7 +498,7 @@ def run_scan(url: str, enable_crawl: bool = True, max_depth: int = 2, vuln_filte
     console.print(Panel(
         summary_table,
         title="[bold green]✅ Scan Complete[/]",
-        border_style="green",
+        border_style="spring_green1",
         width=TABLE_WIDTH,
         title_align="center"
     ))

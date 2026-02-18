@@ -133,16 +133,16 @@ def run(ctx):
         rows = _parse_ai_table(analysis)
         if rows:
             ai_table = Table(
-                title="[bold green]🤖 AI Insights[/]",
+                title="[bold spring_green1]🤖 AI Insights[/]",
                 show_header=True,
-                header_style="bold cyan",
-                border_style="cyan",
+                header_style="bold spring_green1",
+                border_style="grey39",
                 show_lines=True,
                 width=TABLE_WIDTH,
             )
             ai_table.add_column("Vulnerability", style="red", ratio=1, no_wrap=False, overflow="fold")
-            ai_table.add_column("Info", style="white", ratio=2, no_wrap=False, overflow="fold")
-            ai_table.add_column("Potential Fix", style="green", ratio=2, no_wrap=False, overflow="fold")
+            ai_table.add_column("Info", style="cyan", ratio=2, no_wrap=False, overflow="fold")
+            ai_table.add_column("Potential Fix", style="yellow", ratio=2, no_wrap=False, overflow="fold")
 
             for vuln, info, fix in rows:
                 ai_table.add_row(vuln, info, fix)
@@ -150,6 +150,6 @@ def run(ctx):
         else:
             console.print(Panel(
                 Markdown(analysis),
-                title="[bold green]🤖 AI Insights[/]",
-                border_style="cyan"
+                title="[bold spring_green1]🤖 AI Insights[/]",
+                border_style="grey39"
             ))

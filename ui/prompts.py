@@ -50,7 +50,7 @@ def ask_mode() -> str:
         "\nHi I am [spring_green1]dot[/] and I will help you to [spring_green1]spot[/], "
         "before we proceed tell me something !\nwhat would you  like to do ?\n\n"
         "  [spring_green1][bold]1. Check for vulnerabilities\n[/]"
-        "  [light_steel_blue3][bold]2. Find flag\n [/]",
+        "  [cyan bold]2. Find flag\n [/]",
         border_style="white",
         width=100,
         title_align="center"

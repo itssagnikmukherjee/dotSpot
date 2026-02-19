@@ -89,6 +89,12 @@ pip install dotspot
 ```bash
 dotspot scan <target-url>
 ```
+### 👀 To run locally
+```bash
+git clone https://github.com/itssagnikmukherjee/dotSpot.git
+cd dotSpot
+./run.sh scan <target-url>
+```
 
 ### 🤝 Show help
 

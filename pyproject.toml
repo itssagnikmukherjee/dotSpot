@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dotspot"
-version = "0.0.2"
+version = "0.0.3"
 description = "A powerful web vulnerability scanner with SQL injection, SSTI, exposed path detection, and AI-powered analysis."
 readme = "README.md"
 license = "MIT"

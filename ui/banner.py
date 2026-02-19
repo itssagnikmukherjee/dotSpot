@@ -30,7 +30,7 @@ def show_banner():
     panel = Panel(
         banner_text,
         border_style="spring_green1",
-        title="v 0.0.1",
+        title="v 0.0.3",
         width=100,
         title_align="center",
         style="grey89"
